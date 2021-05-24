@@ -3,7 +3,7 @@ package com.piggy.bank.repository.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "table_m2s_grp_mem")
+@Entity(name = "table_m2m_grp_mem")
 public class GrpAndMemRelationDM {
 
 	@Id

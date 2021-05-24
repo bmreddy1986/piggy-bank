@@ -2,26 +2,13 @@ package com.piggy.bank.resource.models;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Member {
-
-	public Member(String id, String name, String address, String email, String password, List<String> group) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.address = address;
-		this.email = email;
-		this.password = password;
-		this.group = group;
-	}
 
 	private String id;
 	private String name;
 	private String address;
 	private String email;
 	private String password;
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	private List<String> group;
 
 	public String getId() {
@@ -29,7 +16,7 @@ public class Member {
 	}
 
 	public void setId(String id) {
-		this.name = name;
+		this.id = id;
 	}
 
 	public String getName() {

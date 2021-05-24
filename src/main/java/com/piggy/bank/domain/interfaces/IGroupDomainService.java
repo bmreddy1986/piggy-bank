@@ -1,14 +1,14 @@
 package com.piggy.bank.domain.interfaces;
 
-import com.piggy.bank.repository.models.GroupDM;
-import com.piggy.bank.repository.models.MemberDM;
+import com.piggy.bank.resource.models.Group;
+import com.piggy.bank.resource.models.Member;
 
 public interface IGroupDomainService {
 	
-	public GroupDM getGroupById(String id);
+	public Group getGroupById(String id);
 	
-	public GroupDM createGroup(GroupDM groupDM);
+	public Group createGroup(Group group);
 	
-	public MemberDM addMember(String groupId, MemberDM memberDM);
+	public Member addMember(String groupId, Member member);
 
 }

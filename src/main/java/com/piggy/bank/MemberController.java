@@ -29,8 +29,10 @@ public class MemberController {
 			List<String> memberGroup = new ArrayList<>();
 			memberGroup.add("GRP_12345");
 			memberGroup.add("GRP_11115");
-			member = new Member("8446115525", "Manohar Reddy", "Hyderabad", "manohar@gmail.com", "Unix11!",
-					memberGroup);
+			/*
+			 * member = new Member("8446115525", "Manohar Reddy", "Hyderabad",
+			 * "manohar@gmail.com", "Unix11!", memberGroup);
+			 */
 			// Member = MemberDao.getById(MemberId);
 		} catch (Exception ex) {
 			System.out.println("Member not found" + ex.getMessage());

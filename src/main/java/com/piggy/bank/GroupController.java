@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.piggy.bank.domain.interfaces.IGroupDomainService;
-import com.piggy.bank.repository.models.GroupDM;
-import com.piggy.bank.resource.mappers.MapGroup2GroupDM;
+import com.piggy.bank.resource.mappers.AppMapper;
 import com.piggy.bank.resource.models.Group;
 import com.piggy.bank.resource.models.Member;
 
@@ -25,7 +24,6 @@ public class GroupController {
 
 	@Autowired
 	private IGroupDomainService groupDomainService;
-	private MapGroup2GroupDM mapper = Mappers.getMapper(MapGroup2GroupDM.class);
 
 	@RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
 	@ResponseBody
@@ -33,7 +31,7 @@ public class GroupController {
 		Group group = null;
 
 		try {
-			group = mapper.mapGroupDM2Group(groupDomainService.getGroupById(id));
+			group = groupDomainService.getGroupById(id);
 		} catch (Exception ex) {
 			System.out.println("Group not found" + ex.getMessage());
 			// return ResponseEntity.accepted().headers(headers).body(group);
@@ -54,7 +52,7 @@ public class GroupController {
 		headers.add("Responded", "GroupController");
 
 		try {
-			group = mapper.mapGroupDM2Group(groupDomainService.createGroup(mapper.mapGroup2GroupDM(group)));
+			group = groupDomainService.createGroup(group);
 		} catch (Exception ex) {
 			System.out.println("Group not found" + ex.getMessage());
 			return ResponseEntity.ok().headers(headers).body(group);
@@ -73,11 +71,7 @@ public class GroupController {
 		headers.add("Message", "Member is added successfully to the group!");
 
 		try {
-			
-			// group = GroupDao.create(group);
-			List<String> memberGroup = new ArrayList<>();
-			memberGroup.add(id);
-			member.setGroup(memberGroup);
+			member = groupDomainService.addMember(id, member);
 		} catch (Exception ex) {
 			System.out.println("Group not found" + ex.getMessage());
 			return ResponseEntity.ok().headers(headers).body(member);
