@@ -1,50 +1,44 @@
 package com.piggy.bank.repository.models;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity(name = "table_m2m_grp_mem")
 public class GrpAndMemRelationDM {
 
-	@Id
-	private String grpid;
-	private String grpstatus;
-	private String memid;
-	private String memstatus;
+	@EmbeddedId
+	private MemberIdentity memberIdentity;
+	private String groupstatus;
+	private String memberstatus;
 
-	public String getGrpid() {
-		return grpid;
+	public String getGroupstatus() {
+		return groupstatus;
 	}
 
-	public void setGrpid(String grpid) {
-		this.grpid = grpid;
+	public GrpAndMemRelationDM setGroupstatus(String groupstatus) {
+		this.groupstatus = groupstatus;
+		return this;
 	}
 
-	public String getGrpstatus() {
-		return grpstatus;
+	public MemberIdentity getMemberIdentity() {
+		return memberIdentity;
 	}
 
-	public void setGrpstatus(String grpstatus) {
-		this.grpstatus = grpstatus;
+	public GrpAndMemRelationDM setMemberIdentity(MemberIdentity memberIdentity) {
+		this.memberIdentity = memberIdentity;
+		return this;
 	}
 
-	public String getMemid() {
-		return memid;
+	public String getMemberstatus() {
+		return memberstatus;
 	}
 
-	public void setMemid(String memid) {
-		this.memid = memid;
-	}
-
-	public String getMemstatus() {
-		return memstatus;
-	}
-
-	public void setMemstatus(String memstatus) {
-		this.memstatus = memstatus;
+	public GrpAndMemRelationDM setMemberstatus(String memstatus) {
+		this.memberstatus = memstatus;
+		return this;
 	}
 
 	public String toString() {
-		return "grpid:" + grpid + " grpstatu:" + grpstatus + " memid:" + memid + " memstatus:" + memstatus;
+		return "memberIdentity:" + memberIdentity + " grpstatu:" + groupstatus + " memstatus:" + memberstatus;
 	}
 }

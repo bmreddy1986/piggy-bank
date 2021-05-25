@@ -1,6 +1,9 @@
 package com.piggy.bank.domain.impl;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import com.piggy.bank.repository.IdentifierUtil;
 import com.piggy.bank.repository.MemberRepository;
 import com.piggy.bank.repository.models.GroupDM;
 import com.piggy.bank.repository.models.GrpAndMemRelationDM;
+import com.piggy.bank.repository.models.MemberIdentity;
 import com.piggy.bank.resource.mappers.AppMapper;
 import com.piggy.bank.resource.models.Group;
 import com.piggy.bank.resource.models.Member;
@@ -27,13 +31,15 @@ public class GroupDomainService implements IGroupDomainService {
 	GrpAndMemRepository m2mRepo;
 	@Autowired
 	IdentifierUtil identifierUtil;
-	
+
 	private AppMapper mapper = Mappers.getMapper(AppMapper.class);
-	
 
 	@Override
 	public Group getGroupById(String id) {
-		return mapper.mapGroupDM2Group(grpRepo.getById(id));
+		Group group = mapper.mapGroupDM2Group(grpRepo.getById(id));
+		List<GrpAndMemRelationDM> m2mList = m2mRepo.findByMemberIdentityGroupid(id);
+		return group.setMembers(m2mList.stream().map(GrpAndMemRelationDM::getMemberIdentity)
+				.map(MemberIdentity::getMemberid).collect(Collectors.toList()));
 	}
 
 	@Override
@@ -45,19 +51,16 @@ public class GroupDomainService implements IGroupDomainService {
 
 	@Override
 	public Member addMember(String groupId, Member member) {
-		/*
-		 * if (null == memRepo.getById(member.getId())) { memRepo.save(member); }
-		 */
-		GrpAndMemRelationDM relDM = new GrpAndMemRelationDM();
-		relDM.setGrpid(groupId);
-		relDM.setGrpstatus(IAppConstants.ACTIVE);
-		relDM.setMemid(member.getId());
-		relDM.setMemstatus(IAppConstants.ACTIVE);
-		m2mRepo.save(relDM);
-		
-		member.setGroup(Arrays.asList(groupId));
+		if (null == memRepo.getById(member.getId())) {
+			memRepo.save(mapper.mapMember2MemberDM(member));
+		}
 
-		return member;
+		GrpAndMemRelationDM relDM = new GrpAndMemRelationDM();
+		relDM.setMemberIdentity(new MemberIdentity().setGroupid(groupId).setMemberid(member.getId()))
+				.setGroupstatus(IAppConstants.ACTIVE).setMemberstatus(IAppConstants.ACTIVE);
+		m2mRepo.save(relDM);
+
+		return member.setGroup(Arrays.asList(groupId));
 	}
 
 }

@@ -3,6 +3,7 @@ com\piggy\bank\resource\models\Member.class
 com\piggy\bank\SpringBootApplication.class
 com\piggy\bank\repository\models\MemberDM.class
 com\piggy\bank\repository\GrpAndMemRepository.class
+com\piggy\bank\repository\models\MemberIdentity.class
 com\piggy\bank\domain\impl\GroupDomainService.class
 com\piggy\bank\repository\models\GrpAndMemRelationDM.class
 com\piggy\bank\GroupController.class

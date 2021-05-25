@@ -18,7 +18,7 @@ public class MemberDM {
 	}
 
 	public void setId(String id) {
-		this.name = name;
+		this.id = id;
 	}
 
 	public String getName() {

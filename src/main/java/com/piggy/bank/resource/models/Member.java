@@ -15,47 +15,53 @@ public class Member {
 		return id;
 	}
 
-	public void setId(String id) {
+	public Member setId(String id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Member setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public Member setAddress(String address) {
 		this.address = address;
+		return this;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public Member setEmail(String email) {
 		this.email = email;
+		return this;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public Member setPassword(String password) {
 		this.password = password;
+		return this;
 	}
 	public List<String> getGroup() {
 		return group;
 	}
 
-	public void setGroup(List<String> group) {
+	public Member setGroup(List<String> group) {
 		this.group = group;
+		return this;
 	}
 
 	@Override

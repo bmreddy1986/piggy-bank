@@ -15,48 +15,54 @@ public class Group {
 		return id;
 	}
 
-	public void setId(String id) {
+	public Group setId(String id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Group setName(String name) {
 		this.name = name;
+		return this;
 	}
 	
 	public String getOrganizerid() {
 		return organizerid;
 	}
 
-	public void setOrganizerid(String organizerid) {
+	public Group setOrganizerid(String organizerid) {
 		this.organizerid = organizerid;
+		return this;
 	}
 
 	public int getRoi() {
 		return roi;
 	}
 
-	public void setRoi(int roi) {
+	public Group setRoi(int roi) {
 		this.roi = roi;
+		return this;
 	}
 
 	public int getDeposit() {
 		return deposit;
 	}
 
-	public void setDeposit(int deposit) {
+	public Group setDeposit(int deposit) {
 		this.deposit = deposit;
+		return this;
 	}
 	
 	public List<String> getMembers() {
 		return members;
 	}
 
-	public void setMembers(List<String> members) {
+	public Group setMembers(List<String> members) {
 		this.members = members;
+		return this;
 	}
 
 	@Override
