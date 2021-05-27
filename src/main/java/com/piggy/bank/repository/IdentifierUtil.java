@@ -3,7 +3,6 @@ package com.piggy.bank.repository;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 
 public class IdentifierUtil {
 	
@@ -21,14 +20,18 @@ public class IdentifierUtil {
 	private static int loanSeqNumber = 2000;
 	private static int depositSeqNumber = 3000;
 	
-	@Autowired GroupRepository repo;
+	@Autowired GroupRepository groupRepo;
+	@Autowired DepositRepository depositRepo;
 	
 	@PostConstruct
 	private void setupIdSeq() {
-		String grpSeqId = repo.getGroupIdSeq();
+		String grpSeqId = groupRepo.getIdSeq();
 		if(null!=grpSeqId && groupSeqNumber < Integer.valueOf(grpSeqId))
 			groupSeqNumber = Integer.valueOf(grpSeqId);
-					
+
+		String depositSeqId = depositRepo.getIdSeq();
+		if(null!=depositSeqId && depositSeqNumber < Integer.valueOf(depositSeqId))
+			depositSeqNumber = Integer.valueOf(depositSeqId);			
 	}
 	
 	public String getGroupSeqId() {

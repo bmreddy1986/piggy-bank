@@ -12,6 +12,6 @@ public interface GroupRepository extends CrudRepository<GroupDM, String> {
     public GroupDM getById(@Param("id") String id);
     
     @Query("SELECT MAX(id) FROM table_group")
-    public String getGroupIdSeq();
+    public String getIdSeq();
     
 }

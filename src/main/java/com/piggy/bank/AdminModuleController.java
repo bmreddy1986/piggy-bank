@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.piggy.bank.domain.interfaces.IGroupAndMemberDomainService;
+import com.piggy.bank.domain.interfaces.IAdminModuleDomainService;
 import com.piggy.bank.resource.models.Group;
 import com.piggy.bank.resource.models.Member;
 
@@ -18,7 +18,7 @@ import com.piggy.bank.resource.models.Member;
 public class AdminModuleController {
 
 	@Autowired
-	private IGroupAndMemberDomainService domainService;
+	private IAdminModuleDomainService domainService;
 
 	@RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
 	@ResponseBody

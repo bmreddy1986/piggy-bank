@@ -1,15 +1,17 @@
 package com.piggy.bank.resource.mappers;
 
+import com.piggy.bank.repository.models.DepositDM;
 import com.piggy.bank.repository.models.GroupDM;
 import com.piggy.bank.repository.models.MemberDM;
+import com.piggy.bank.resource.models.Deposit;
 import com.piggy.bank.resource.models.Group;
 import com.piggy.bank.resource.models.Member;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-26T23:49:44+0530",
-    comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.22.0.v20200530-2032, environment: Java 11.0.8 (Oracle Corporation)"
+    date = "2021-05-28T00:11:53+0530",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.8 (Oracle Corporation)"
 )
 public class AppMapperImpl implements AppMapper {
 
@@ -79,5 +81,45 @@ public class AppMapperImpl implements AppMapper {
         member.setPassword( memberDM.getPassword() );
 
         return member;
+    }
+
+    @Override
+    public DepositDM mapDeposit2DepositDM(Deposit deposit) {
+        if ( deposit == null ) {
+            return null;
+        }
+
+        DepositDM depositDM = new DepositDM();
+
+        depositDM.setId( deposit.getId() );
+        depositDM.setMemberid( deposit.getMemberid() );
+        depositDM.setGroupid( deposit.getGroupid() );
+        depositDM.setAmount( deposit.getAmount() );
+        depositDM.setDepositmonth( deposit.getDepositmonth() );
+        depositDM.setBanktxid( deposit.getBanktxid() );
+        depositDM.setLoanid( deposit.getLoanid() );
+        depositDM.setIntamount( deposit.getIntamount() );
+
+        return depositDM;
+    }
+
+    @Override
+    public Deposit mapDepositDM2Deposit(DepositDM depositDM) {
+        if ( depositDM == null ) {
+            return null;
+        }
+
+        Deposit deposit = new Deposit();
+
+        deposit.setId( depositDM.getId() );
+        deposit.setMemberid( depositDM.getMemberid() );
+        deposit.setGroupid( depositDM.getGroupid() );
+        deposit.setAmount( depositDM.getAmount() );
+        deposit.setDepositmonth( depositDM.getDepositmonth() );
+        deposit.setBanktxid( depositDM.getBanktxid() );
+        deposit.setLoanid( depositDM.getLoanid() );
+        deposit.setIntamount( depositDM.getIntamount() );
+
+        return deposit;
     }
 }
