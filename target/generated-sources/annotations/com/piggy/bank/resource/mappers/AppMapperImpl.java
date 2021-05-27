@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-26T00:06:15+0530",
+    date = "2021-05-26T23:49:44+0530",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.22.0.v20200530-2032, environment: Java 11.0.8 (Oracle Corporation)"
 )
 public class AppMapperImpl implements AppMapper {
@@ -21,10 +21,10 @@ public class AppMapperImpl implements AppMapper {
 
         GroupDM groupDM = new GroupDM();
 
-        groupDM.setDeposit( group.getDeposit() );
         groupDM.setId( group.getId() );
         groupDM.setName( group.getName() );
         groupDM.setOrganizerid( group.getOrganizerid() );
+        groupDM.setDeposit( group.getDeposit() );
         groupDM.setRoi( group.getRoi() );
 
         return groupDM;
@@ -38,11 +38,11 @@ public class AppMapperImpl implements AppMapper {
 
         Group group = new Group();
 
-        group.setDeposit( groupDM.getDeposit() );
         group.setId( groupDM.getId() );
         group.setName( groupDM.getName() );
         group.setOrganizerid( groupDM.getOrganizerid() );
         group.setRoi( groupDM.getRoi() );
+        group.setDeposit( groupDM.getDeposit() );
 
         return group;
     }
@@ -55,10 +55,10 @@ public class AppMapperImpl implements AppMapper {
 
         MemberDM memberDM = new MemberDM();
 
-        memberDM.setAddress( member.getAddress() );
-        memberDM.setEmail( member.getEmail() );
         memberDM.setId( member.getId() );
         memberDM.setName( member.getName() );
+        memberDM.setAddress( member.getAddress() );
+        memberDM.setEmail( member.getEmail() );
         memberDM.setPassword( member.getPassword() );
 
         return memberDM;
@@ -72,10 +72,10 @@ public class AppMapperImpl implements AppMapper {
 
         Member member = new Member();
 
-        member.setAddress( memberDM.getAddress() );
-        member.setEmail( memberDM.getEmail() );
         member.setId( memberDM.getId() );
         member.setName( memberDM.getName() );
+        member.setAddress( memberDM.getAddress() );
+        member.setEmail( memberDM.getEmail() );
         member.setPassword( memberDM.getPassword() );
 
         return member;

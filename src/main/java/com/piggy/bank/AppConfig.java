@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.piggy.bank.domain.impl.GroupDomainService;
-import com.piggy.bank.domain.interfaces.IGroupDomainService;
+import com.piggy.bank.domain.impl.GroupAndMemberDomainService;
+import com.piggy.bank.domain.interfaces.IGroupAndMemberDomainService;
 import com.piggy.bank.repository.IdentifierUtil;
 
 @Configuration
@@ -17,8 +17,8 @@ public class AppConfig {
 		return new IdentifierUtil();
 	}
 	
-	@Bean public IGroupDomainService groupDomainService() {
-		return new GroupDomainService();
+	@Bean public IGroupAndMemberDomainService groupDomainService() {
+		return new GroupAndMemberDomainService();
 	}
 	
 }
