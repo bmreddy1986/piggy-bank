@@ -16,9 +16,9 @@ public class AppExceptionHandler {
 
     @ExceptionHandler(value = { ResourceNotFoundException.class })
     public ResponseEntity<Object> handleInvalidInputException(ResourceNotFoundException ex) {
-    	//LOGGER.error("ResourceNotFoundException: ", ex);
-    	WebException we = new WebException(HttpStatus.NOT_FOUND, "ErrorCode Not Implemented", ex.getMessage());
-        return new ResponseEntity<Object>(we,HttpStatus.NOT_FOUND);
+    	LOGGER.error("ResourceNotFoundException: ", ex.getMessage());
+    	ExceptionBody webEx = new ExceptionBody(HttpStatus.NOT_FOUND, "ErrorCode Not Implemented", ex.getMessage());
+        return new ResponseEntity<Object>(webEx, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = { Unauthorized.class })

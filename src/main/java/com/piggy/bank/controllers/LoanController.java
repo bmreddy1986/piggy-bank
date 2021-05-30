@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.piggy.bank.domain.interfaces.IAdminModuleDomainService;
+import com.piggy.bank.domain.interfaces.IGroupDomainService;
 import com.piggy.bank.resource.models.Deposit;
 import com.piggy.bank.resource.models.LoanProposal;
 
 @Controller
-public class LoanModuleController {
+public class LoanController {
 
 	@Autowired
-	private IAdminModuleDomainService domainService;
+	private IGroupDomainService domainService;
 
 	@RequestMapping(value = "/group/{groupId}/member/{memberId}/loan", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Deposit> createLoan(@PathVariable String groupId, @PathVariable String memberId,

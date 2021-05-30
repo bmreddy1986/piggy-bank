@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.piggy.bank.domain.interfaces.IAdminModuleDomainService;
+import com.piggy.bank.domain.interfaces.IGroupDomainService;
 import com.piggy.bank.resource.models.Group;
 import com.piggy.bank.resource.models.Member;
 
 @Controller
-public class AdminModuleController {
+public class GroupController {
 
 	@Autowired
-	private IAdminModuleDomainService domainService;
+	private IGroupDomainService domainService;
 
 	@RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Group> getGroupById(@PathVariable("id") String id) {

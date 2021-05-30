@@ -3,7 +3,7 @@ package com.piggy.bank.exceptions;
 import org.springframework.http.HttpStatus;
 
 @SuppressWarnings("serial")
-public class WebException {
+public class ExceptionBody {
 
 	private final HttpStatus status;
 
@@ -11,7 +11,7 @@ public class WebException {
 
 	private final String message;
 
-	public WebException(final HttpStatus status, final String code, final String message) {
+	public ExceptionBody(final HttpStatus status, final String code, final String message) {
 		this.status = status;
 		this.code = code;
 		this.message = message;

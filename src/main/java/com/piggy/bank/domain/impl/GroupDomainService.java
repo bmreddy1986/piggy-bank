@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.piggy.bank.domain.interfaces.IAdminModuleDomainService;
+import com.piggy.bank.domain.interfaces.IGroupDomainService;
 import com.piggy.bank.domain.interfaces.IAppConstants;
 import com.piggy.bank.domain.interfaces.ICalculateEMIService;
 import com.piggy.bank.domain.interfaces.ICalculateInterestService;
@@ -31,7 +31,7 @@ import com.piggy.bank.resource.models.Group;
 import com.piggy.bank.resource.models.LoanProposal;
 import com.piggy.bank.resource.models.Member;
 
-public class AdminModuleDomainService implements IAdminModuleDomainService {
+public class GroupDomainService implements IGroupDomainService {
 
 	@Autowired
 	GroupRepository grpRepo;
