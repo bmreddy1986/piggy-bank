@@ -21,29 +21,25 @@ public class AdminModuleController {
 	private IAdminModuleDomainService domainService;
 
 	@RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<Group> getGroup(@PathVariable("id") String id) {
+	public ResponseEntity<Group> getGroupById(@PathVariable("id") String id) {
 		Group group = domainService.getGroupById(id);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(group);
 	}
 
 	@RequestMapping(value = "/group", method = RequestMethod.POST, consumes = "application/json")
-	@ResponseBody
 	public ResponseEntity<Group> createGroup(@RequestBody Group group) {
 		group = domainService.createGroup(group);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(group);
 	}
 
 	@RequestMapping(value = "/group/{id}/addMember", method = RequestMethod.POST, consumes = "application/json")
-	@ResponseBody
-	public ResponseEntity<Member> create(@RequestBody Member member, @PathVariable String id) {
+	public ResponseEntity<Member> addMember(@RequestBody Member member, @PathVariable String id) {
 		member = domainService.addMember(id, member);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(member);
 	}
 
 	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<Member> getMember(@PathVariable("id") String id) {
+	public ResponseEntity<Member> getMemberById(@PathVariable("id") String id) {
 		Member member = member = domainService.getMemberById(id);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(member);
 	}
