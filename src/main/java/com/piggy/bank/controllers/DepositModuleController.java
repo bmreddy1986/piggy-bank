@@ -1,4 +1,4 @@
-package com.piggy.bank;
+package com.piggy.bank.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

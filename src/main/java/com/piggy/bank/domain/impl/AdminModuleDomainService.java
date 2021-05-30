@@ -14,6 +14,7 @@ import com.piggy.bank.domain.interfaces.IAdminModuleDomainService;
 import com.piggy.bank.domain.interfaces.IAppConstants;
 import com.piggy.bank.domain.interfaces.ICalculateEMIService;
 import com.piggy.bank.domain.interfaces.ICalculateInterestService;
+import com.piggy.bank.exceptions.ResourceNotFoundException;
 import com.piggy.bank.repository.DepositRepository;
 import com.piggy.bank.repository.GroupRepository;
 import com.piggy.bank.repository.GrpAndMemRepository;
@@ -52,6 +53,8 @@ public class AdminModuleDomainService implements IAdminModuleDomainService {
 	@Override
 	public Group getGroupById(String id) {
 		Group group = mapper.mapGroupDM2Group(grpRepo.getById(id));
+		if(null == group)
+			throw new ResourceNotFoundException(String.format("Group {%s} Not found", id));
 		List<GrpAndMemRelationDM> m2mList = m2mRepo.findByMemberIdentityGroupid(id);
 		return group.setMembers(m2mList.stream().map(GrpAndMemRelationDM::getMemberIdentity)
 				.map(MemberIdentity::getMemberid).collect(Collectors.toList()));
