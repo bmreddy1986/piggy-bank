@@ -24,13 +24,7 @@ public class DepositModuleController {
 	public ResponseEntity<Deposit> createDeposit(@PathVariable String groupId, @PathVariable String memberId,
 			@RequestBody Deposit deposit) {
 
-		try {
-			deposit = domainService.addDeposit(groupId, memberId, deposit);
-		} catch (Exception ex) {
-			System.out.println("Group not found" + ex.getMessage());
-			return ResponseEntity.ok().headers(getResponseHeader()).body(deposit);
-		}
-
+		deposit = domainService.addDeposit(groupId, memberId, deposit);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(deposit);
 	}
 

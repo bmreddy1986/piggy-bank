@@ -1,5 +1,7 @@
 com\piggy\bank\repository\models\GroupDM.class
 com\piggy\bank\resource\models\Member.class
+com\piggy\bank\resource\models\EMI.class
+com\piggy\bank\domain\interfaces\ICalculateInterestService.class
 com\piggy\bank\SpringBootApplication.class
 com\piggy\bank\repository\models\MemberDM.class
 com\piggy\bank\repository\GrpAndMemRepository.class
@@ -7,6 +9,8 @@ com\piggy\bank\repository\models\MemberIdentity.class
 com\piggy\bank\repository\models\DepositDM.class
 com\piggy\bank\resource\models\Deposit.class
 com\piggy\bank\repository\models\GrpAndMemRelationDM.class
+com\piggy\bank\domain\interfaces\ICalculateEMIService.class
+com\piggy\bank\domain\impl\CalculateEMIService.class
 com\piggy\bank\repository\GroupRepository.class
 com\piggy\bank\AppConfig.class
 com\piggy\bank\resource\mappers\AppMapper.class
@@ -16,7 +20,10 @@ com\piggy\bank\repository\DepositRepository.class
 com\piggy\bank\repository\MemberRepository.class
 com\piggy\bank\resource\mappers\AppMapperImpl.class
 com\piggy\bank\resource\models\Group.class
+com\piggy\bank\resource\models\LoanProposal.class
 com\piggy\bank\domain\impl\AdminModuleDomainService.class
 com\piggy\bank\repository\IdentifierUtil.class
+com\piggy\bank\domain\impl\CalculateInterestService.class
+com\piggy\bank\LoanModuleController.class
 com\piggy\bank\DepositModuleController.class
 com\piggy\bank\AdminModuleController.class

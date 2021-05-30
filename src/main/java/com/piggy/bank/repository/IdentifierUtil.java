@@ -16,9 +16,9 @@ public class IdentifierUtil {
 	}
 	
 	
-	private static int groupSeqNumber = 1000;
-	private static int loanSeqNumber = 2000;
-	private static int depositSeqNumber = 3000;
+	private static int groupSeqNumber = 10000;
+	private static int loanSeqNumber = 20000;
+	private static int depositSeqNumber = 300000;
 	
 	@Autowired GroupRepository groupRepo;
 	@Autowired DepositRepository depositRepo;

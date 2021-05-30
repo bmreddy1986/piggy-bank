@@ -1,5 +1,5 @@
 var req = new XMLHttpRequest();
-req.open('GET', 'http://localhost:8080/group/1007', true);
+req.open('GET', 'http://localhost:8080/group/10001', true);
 req.onload = function () {  
   var group = JSON.parse(this.response);
   
