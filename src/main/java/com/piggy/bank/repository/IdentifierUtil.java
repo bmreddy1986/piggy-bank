@@ -22,6 +22,7 @@ public class IdentifierUtil {
 	
 	@Autowired GroupRepository groupRepo;
 	@Autowired DepositRepository depositRepo;
+	@Autowired LoanRepository loanRepo;
 	
 	@PostConstruct
 	private void setupIdSeq() {
@@ -31,7 +32,11 @@ public class IdentifierUtil {
 
 		String depositSeqId = depositRepo.getIdSeq();
 		if(null!=depositSeqId && depositSeqNumber < Integer.valueOf(depositSeqId))
-			depositSeqNumber = Integer.valueOf(depositSeqId);			
+			depositSeqNumber = Integer.valueOf(depositSeqId);
+		
+		String loanSeqId = loanRepo.getIdSeq();
+		if(null!=loanSeqId && loanSeqNumber < Integer.valueOf(loanSeqId))
+			loanSeqNumber = Integer.valueOf(loanSeqId);
 	}
 	
 	public String getGroupSeqId() {

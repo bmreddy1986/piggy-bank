@@ -28,7 +28,6 @@ public class DepositController {
 	public HttpHeaders getResponseHeader() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json");
-		headers.add("Responded", "GroupController");
 		return headers;
 	}
 }

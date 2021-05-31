@@ -2,15 +2,17 @@ package com.piggy.bank.resource.mappers;
 
 import com.piggy.bank.repository.models.DepositDM;
 import com.piggy.bank.repository.models.GroupDM;
+import com.piggy.bank.repository.models.LoanDM;
 import com.piggy.bank.repository.models.MemberDM;
 import com.piggy.bank.resource.models.Deposit;
 import com.piggy.bank.resource.models.Group;
+import com.piggy.bank.resource.models.Loan;
 import com.piggy.bank.resource.models.Member;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-30T23:37:09+0530",
+    date = "2021-05-31T22:45:43+0530",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.22.0.v20200530-2032, environment: Java 11.0.8 (Oracle Corporation)"
 )
 public class AppMapperImpl implements AppMapper {
@@ -121,5 +123,43 @@ public class AppMapperImpl implements AppMapper {
         deposit.setIntamount( depositDM.getIntamount() );
 
         return deposit;
+    }
+
+    @Override
+    public LoanDM mapLoan2LoanDM(Loan loan) {
+        if ( loan == null ) {
+            return null;
+        }
+
+        LoanDM loanDM = new LoanDM();
+
+        loanDM.setId( loan.getId() );
+        loanDM.setAmount( loan.getAmount() );
+        loanDM.setEmicount( loan.getEmicount() );
+        loanDM.setBanktxid( loan.getBanktxid() );
+        loanDM.setStatus( loan.getStatus() );
+        loanDM.setParentloanid( loan.getParentloanid() );
+        loanDM.setParentloanbal( loan.getParentloanbal() );
+
+        return loanDM;
+    }
+
+    @Override
+    public Loan mapLoanDM2Loan(LoanDM loanDM) {
+        if ( loanDM == null ) {
+            return null;
+        }
+
+        Loan loan = new Loan();
+
+        loan.setId( loanDM.getId() );
+        loan.setAmount( loanDM.getAmount() );
+        loan.setEmicount( loanDM.getEmicount() );
+        loan.setBanktxid( loanDM.getBanktxid() );
+        loan.setStatus( loanDM.getStatus() );
+        loan.setParentloanid( loanDM.getParentloanid() );
+        loan.setParentloanbal( loanDM.getParentloanbal() );
+
+        return loan;
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.piggy.bank.domain.interfaces.IGroupDomainService;
-import com.piggy.bank.resource.models.Deposit;
+import com.piggy.bank.resource.models.Loan;
 import com.piggy.bank.resource.models.LoanProposal;
 
 @Controller
@@ -20,9 +20,10 @@ public class LoanController {
 	private IGroupDomainService domainService;
 
 	@RequestMapping(value = "/group/{groupId}/member/{memberId}/loan", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Deposit> createLoan(@PathVariable String groupId, @PathVariable String memberId,
-			@RequestBody Deposit deposit) {
-		return ResponseEntity.ok().headers(getResponseHeader()).body(deposit);
+	public ResponseEntity<Loan> createLoan(@PathVariable String groupId, @PathVariable String memberId,
+			@RequestBody Loan loan) {
+		loan = domainService.createLoan(groupId, memberId, loan);
+		return ResponseEntity.ok().headers(getResponseHeader()).body(loan);
 	}
 
 	@RequestMapping(value = "/group/{groupId}/member/{memberId}/loan/propose", method = RequestMethod.POST, consumes = "application/json")
@@ -35,7 +36,6 @@ public class LoanController {
 	public HttpHeaders getResponseHeader() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json");
-		headers.add("Responded", "GroupController");
 		return headers;
 	}
 }
