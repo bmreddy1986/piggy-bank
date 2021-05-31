@@ -9,7 +9,7 @@ public class Deposit {
 	private String groupid;
 	private int amount;
 	private Date date;
-	private String depositmonth;
+	private String depositMonth;
 	private String banktxid;
 	private String loanid;
 	private int intamount;
@@ -59,12 +59,12 @@ public class Deposit {
 		return this;
 	}
 
-	public String getDepositmonth() {
-		return depositmonth;
+	public String getDepositMonth() {
+		return depositMonth;
 	}
 
-	public Deposit setDepositmonth(String depositmonth) {
-		this.depositmonth = depositmonth;
+	public Deposit setDepositMonth(String depositMonth) {
+		this.depositMonth = depositMonth;
 		return this;
 	}
 
@@ -103,7 +103,7 @@ public class Deposit {
 		result = prime * result + amount;
 		result = prime * result + ((banktxid == null) ? 0 : banktxid.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result + ((depositmonth == null) ? 0 : depositmonth.hashCode());
+		result = prime * result + ((depositMonth == null) ? 0 : depositMonth.hashCode());
 		result = prime * result + ((groupid == null) ? 0 : groupid.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + intamount;
@@ -133,10 +133,10 @@ public class Deposit {
 				return false;
 		} else if (!date.equals(other.date))
 			return false;
-		if (depositmonth == null) {
-			if (other.depositmonth != null)
+		if (depositMonth == null) {
+			if (other.depositMonth != null)
 				return false;
-		} else if (!depositmonth.equals(other.depositmonth))
+		} else if (!depositMonth.equals(other.depositMonth))
 			return false;
 		if (groupid == null) {
 			if (other.groupid != null)
@@ -166,7 +166,7 @@ public class Deposit {
 	@Override
 	public String toString() {
 		return "Deposit [id=" + id + ", memberid=" + memberid + ", groupid=" + groupid + ", amount=" + amount
-				+ ", date=" + date + ", depositmonth=" + depositmonth + ", banktxid=" + banktxid + ", loanid=" + loanid
+				+ ", date=" + date + ", depositMonth=" + depositMonth + ", banktxid=" + banktxid + ", loanid=" + loanid
 				+ ", intamount=" + intamount + "]";
 	}
 

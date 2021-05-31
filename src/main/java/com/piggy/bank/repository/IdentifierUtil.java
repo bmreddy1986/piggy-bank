@@ -1,54 +1,46 @@
 package com.piggy.bank.repository;
 
 import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
 
 public class IdentifierUtil {
-	
-	private static int count = 1000;
-	
-	public String getId(String name) {
-		if("Group".equals(name)) {
-			return String.valueOf(++count);
-		}
-		return null;
-	}
-	
-	
+
 	private static int groupSeqNumber = 10000;
 	private static int loanSeqNumber = 20000;
 	private static int depositSeqNumber = 300000;
-	
-	@Autowired GroupRepository groupRepo;
-	@Autowired DepositRepository depositRepo;
-	@Autowired LoanRepository loanRepo;
-	
+
+	@Inject
+	private GroupRepository groupRepository;
+	@Inject
+	private DepositRepository depositRepository;
+	@Inject
+	private LoanRepository loanRepository;
+
 	@PostConstruct
 	private void setupIdSeq() {
-		String grpSeqId = groupRepo.getIdSeq();
-		if(null!=grpSeqId && groupSeqNumber < Integer.valueOf(grpSeqId))
+		String grpSeqId = groupRepository.getIdSeq();
+		if (null != grpSeqId && groupSeqNumber < Integer.valueOf(grpSeqId))
 			groupSeqNumber = Integer.valueOf(grpSeqId);
 
-		String depositSeqId = depositRepo.getIdSeq();
-		if(null!=depositSeqId && depositSeqNumber < Integer.valueOf(depositSeqId))
+		String depositSeqId = depositRepository.getIdSeq();
+		if (null != depositSeqId && depositSeqNumber < Integer.valueOf(depositSeqId))
 			depositSeqNumber = Integer.valueOf(depositSeqId);
-		
-		String loanSeqId = loanRepo.getIdSeq();
-		if(null!=loanSeqId && loanSeqNumber < Integer.valueOf(loanSeqId))
+
+		String loanSeqId = loanRepository.getIdSeq();
+		if (null != loanSeqId && loanSeqNumber < Integer.valueOf(loanSeqId))
 			loanSeqNumber = Integer.valueOf(loanSeqId);
 	}
-	
+
 	public String getGroupSeqId() {
 		return String.valueOf(++groupSeqNumber);
 	}
+
 	public String getLoanSeqId() {
 		return String.valueOf(++loanSeqNumber);
 	}
+
 	public String getDepositSeqId() {
 		return String.valueOf(++depositSeqNumber);
 	}
-	
-	
 
 }

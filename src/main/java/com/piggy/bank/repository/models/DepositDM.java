@@ -2,6 +2,7 @@ package com.piggy.bank.repository.models;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,7 +14,9 @@ public class DepositDM {
 	private String memberid;
 	private String groupid;
 	private int amount;
-	private String depositmonth;
+	@Column(name="deposit_month")
+	private String depositMonth;
+	
 	private String banktxid;
 	private String loanid;
 	private int intamount;
@@ -54,12 +57,12 @@ public class DepositDM {
 		return this;
 	}
 
-	public String getDepositmonth() {
-		return depositmonth;
+	public String getDepositMonth() {
+		return depositMonth;
 	}
 
-	public DepositDM setDepositmonth(String depositmonth) {
-		this.depositmonth = depositmonth;
+	public DepositDM setDepositMonth(String depositMonth) {
+		this.depositMonth = depositMonth;
 		return this;
 	}
 
@@ -96,7 +99,7 @@ public class DepositDM {
 		int result = 1;
 		result = prime * result + amount;
 		result = prime * result + ((banktxid == null) ? 0 : banktxid.hashCode());
-		result = prime * result + ((depositmonth == null) ? 0 : depositmonth.hashCode());
+		result = prime * result + ((depositMonth == null) ? 0 : depositMonth.hashCode());
 		result = prime * result + ((groupid == null) ? 0 : groupid.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + intamount;
@@ -121,10 +124,10 @@ public class DepositDM {
 				return false;
 		} else if (!banktxid.equals(other.banktxid))
 			return false;
-		if (depositmonth == null) {
-			if (other.depositmonth != null)
+		if (depositMonth == null) {
+			if (other.depositMonth != null)
 				return false;
-		} else if (!depositmonth.equals(other.depositmonth))
+		} else if (!depositMonth.equals(other.depositMonth))
 			return false;
 		if (groupid == null) {
 			if (other.groupid != null)
@@ -154,7 +157,7 @@ public class DepositDM {
 	@Override
 	public String toString() {
 		return "DepositDM [id=" + id + ", memberid=" + memberid + ", groupid=" + groupid + ", amount=" + amount
-				+ ", depositmonth=" + depositmonth + ", banktxid=" + banktxid + ", loanid=" + loanid + ", intamount="
+				+ ", depositMonth=" + depositMonth + ", banktxid=" + banktxid + ", loanid=" + loanid + ", intamount="
 				+ intamount + "]";
 	}
 

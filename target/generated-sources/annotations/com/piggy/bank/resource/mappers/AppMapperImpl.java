@@ -12,7 +12,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-31T22:45:43+0530",
+    date = "2021-05-31T23:10:45+0530",
     comments = "version: 1.3.1.Final, compiler: Eclipse JDT (IDE) 3.22.0.v20200530-2032, environment: Java 11.0.8 (Oracle Corporation)"
 )
 public class AppMapperImpl implements AppMapper {
@@ -25,10 +25,10 @@ public class AppMapperImpl implements AppMapper {
 
         GroupDM groupDM = new GroupDM();
 
+        groupDM.setDeposit( group.getDeposit() );
         groupDM.setId( group.getId() );
         groupDM.setName( group.getName() );
         groupDM.setOrganizerid( group.getOrganizerid() );
-        groupDM.setDeposit( group.getDeposit() );
         groupDM.setRoi( group.getRoi() );
 
         return groupDM;
@@ -42,11 +42,11 @@ public class AppMapperImpl implements AppMapper {
 
         Group group = new Group();
 
+        group.setDeposit( groupDM.getDeposit() );
         group.setId( groupDM.getId() );
         group.setName( groupDM.getName() );
         group.setOrganizerid( groupDM.getOrganizerid() );
         group.setRoi( groupDM.getRoi() );
-        group.setDeposit( groupDM.getDeposit() );
 
         return group;
     }
@@ -59,10 +59,10 @@ public class AppMapperImpl implements AppMapper {
 
         MemberDM memberDM = new MemberDM();
 
-        memberDM.setId( member.getId() );
-        memberDM.setName( member.getName() );
         memberDM.setAddress( member.getAddress() );
         memberDM.setEmail( member.getEmail() );
+        memberDM.setId( member.getId() );
+        memberDM.setName( member.getName() );
         memberDM.setPassword( member.getPassword() );
 
         return memberDM;
@@ -76,10 +76,10 @@ public class AppMapperImpl implements AppMapper {
 
         Member member = new Member();
 
-        member.setId( memberDM.getId() );
-        member.setName( memberDM.getName() );
         member.setAddress( memberDM.getAddress() );
         member.setEmail( memberDM.getEmail() );
+        member.setId( memberDM.getId() );
+        member.setName( memberDM.getName() );
         member.setPassword( memberDM.getPassword() );
 
         return member;
@@ -93,14 +93,14 @@ public class AppMapperImpl implements AppMapper {
 
         DepositDM depositDM = new DepositDM();
 
-        depositDM.setId( deposit.getId() );
-        depositDM.setMemberid( deposit.getMemberid() );
-        depositDM.setGroupid( deposit.getGroupid() );
         depositDM.setAmount( deposit.getAmount() );
-        depositDM.setDepositmonth( deposit.getDepositmonth() );
         depositDM.setBanktxid( deposit.getBanktxid() );
-        depositDM.setLoanid( deposit.getLoanid() );
+        depositDM.setDepositMonth( deposit.getDepositMonth() );
+        depositDM.setGroupid( deposit.getGroupid() );
+        depositDM.setId( deposit.getId() );
         depositDM.setIntamount( deposit.getIntamount() );
+        depositDM.setLoanid( deposit.getLoanid() );
+        depositDM.setMemberid( deposit.getMemberid() );
 
         return depositDM;
     }
@@ -113,14 +113,14 @@ public class AppMapperImpl implements AppMapper {
 
         Deposit deposit = new Deposit();
 
-        deposit.setId( depositDM.getId() );
-        deposit.setMemberid( depositDM.getMemberid() );
-        deposit.setGroupid( depositDM.getGroupid() );
         deposit.setAmount( depositDM.getAmount() );
-        deposit.setDepositmonth( depositDM.getDepositmonth() );
         deposit.setBanktxid( depositDM.getBanktxid() );
-        deposit.setLoanid( depositDM.getLoanid() );
+        deposit.setDepositMonth( depositDM.getDepositMonth() );
+        deposit.setGroupid( depositDM.getGroupid() );
+        deposit.setId( depositDM.getId() );
         deposit.setIntamount( depositDM.getIntamount() );
+        deposit.setLoanid( depositDM.getLoanid() );
+        deposit.setMemberid( depositDM.getMemberid() );
 
         return deposit;
     }
@@ -133,13 +133,13 @@ public class AppMapperImpl implements AppMapper {
 
         LoanDM loanDM = new LoanDM();
 
-        loanDM.setId( loan.getId() );
         loanDM.setAmount( loan.getAmount() );
-        loanDM.setEmicount( loan.getEmicount() );
         loanDM.setBanktxid( loan.getBanktxid() );
-        loanDM.setStatus( loan.getStatus() );
-        loanDM.setParentloanid( loan.getParentloanid() );
+        loanDM.setEmicount( loan.getEmicount() );
+        loanDM.setId( loan.getId() );
         loanDM.setParentloanbal( loan.getParentloanbal() );
+        loanDM.setParentloanid( loan.getParentloanid() );
+        loanDM.setStatus( loan.getStatus() );
 
         return loanDM;
     }
@@ -152,13 +152,13 @@ public class AppMapperImpl implements AppMapper {
 
         Loan loan = new Loan();
 
-        loan.setId( loanDM.getId() );
         loan.setAmount( loanDM.getAmount() );
-        loan.setEmicount( loanDM.getEmicount() );
         loan.setBanktxid( loanDM.getBanktxid() );
-        loan.setStatus( loanDM.getStatus() );
-        loan.setParentloanid( loanDM.getParentloanid() );
+        loan.setEmicount( loanDM.getEmicount() );
+        loan.setId( loanDM.getId() );
         loan.setParentloanbal( loanDM.getParentloanbal() );
+        loan.setParentloanid( loanDM.getParentloanid() );
+        loan.setStatus( loanDM.getStatus() );
 
         return loan;
     }
