@@ -5,7 +5,7 @@ import javax.inject.Inject;
 
 public class IdentifierUtil {
 
-	private static int groupSeqNumber = 10000;
+	private static int groupSeqNumber = 1000;
 	private static int loanSeqNumber = 20000;
 	private static int depositSeqNumber = 300000;
 

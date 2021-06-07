@@ -1,13 +1,17 @@
 package com.piggy.bank.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.piggy.bank.domain.interfaces.IGroupDomainService;
 import com.piggy.bank.resource.models.Group;
@@ -21,8 +25,15 @@ public class GroupController {
 
 	@RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Group> getGroupById(@PathVariable("id") String id) {
+		System.out.println("id: " + id);
 		Group group = domainService.getGroupById(id);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(group);
+	}
+	
+	@RequestMapping(value = "/group", method = RequestMethod.GET)
+	public ResponseEntity<List<Group>> searchtGroup(@RequestParam String organizerId) {
+	    List<Group> groupList = domainService.searchGroup(organizerId);
+	    return ResponseEntity.ok().headers(getResponseHeader()).body(groupList);
 	}
 
 	@RequestMapping(value = "/group", method = RequestMethod.POST, consumes = "application/json")
@@ -40,6 +51,12 @@ public class GroupController {
 	@RequestMapping(value = "/member/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Member> getMemberById(@PathVariable("id") String id) {
 		Member member = member = domainService.getMemberById(id);
+		return ResponseEntity.ok().headers(getResponseHeader()).body(member);
+	}
+	
+	@RequestMapping(value = "/member", method = RequestMethod.GET)
+	public ResponseEntity<List<Member>> getMembersByGroupId(@RequestParam String groupId) {
+		List<Member> member = domainService.getMembersByGroupId(groupId);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(member);
 	}
 

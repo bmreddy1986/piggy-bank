@@ -26,6 +26,7 @@ import com.piggy.bank.repository.models.DepositDM;
 import com.piggy.bank.repository.models.GroupDM;
 import com.piggy.bank.repository.models.GrpAndMemRelationDM;
 import com.piggy.bank.repository.models.LoanDM;
+import com.piggy.bank.repository.models.MemberDM;
 import com.piggy.bank.repository.models.MemberIdentity;
 import com.piggy.bank.resource.mappers.AppMapper;
 import com.piggy.bank.resource.models.Deposit;
@@ -61,9 +62,22 @@ public class GroupDomainService implements IGroupDomainService {
 		Group group = mapper.mapGroupDM2Group(groupRepository.getById(id));
 		if (null == group)
 			throw new ResourceNotFoundException(String.format("Group {%s} Not found", id));
-		List<GrpAndMemRelationDM> m2mList = m2mRepository.findByMemberIdentityGroupid(id);
-		return group.setMembers(m2mList.stream().map(GrpAndMemRelationDM::getMemberIdentity)
-				.map(MemberIdentity::getMemberid).collect(Collectors.toList()));
+		
+		return group.setMember(getMembersByGroupId(id));
+	}
+	
+	@Override
+	public List<Member> getMembersByGroupId(String groupId) {
+		List<GrpAndMemRelationDM> m2mList = m2mRepository.findByMemberIdentityGroupid(groupId);
+		List<String> memList = m2mList.stream().map(GrpAndMemRelationDM::getMemberIdentity)
+				.map(MemberIdentity::getMemberid).collect(Collectors.toList());
+		List<MemberDM> members = memList.stream().map(x->memberRepository.getById(x)).collect(Collectors.toList());
+		return members.stream().map(x->mapper.mapMemberDM2Member(x)).collect(Collectors.toList());
+	}
+	
+	@Override
+	public List<Group> searchGroup(String organizerId) {
+		return mapper.mapGroupDM2Group(groupRepository.findByOrganizerid(organizerId));
 	}
 
 	@Override
@@ -92,7 +106,7 @@ public class GroupDomainService implements IGroupDomainService {
 		List<GrpAndMemRelationDM> m2mList = m2mRepository.findByMemberIdentityMemberid(id);
 		return member.setGroup(m2mList.stream().map(GrpAndMemRelationDM::getMemberIdentity)
 				.map(MemberIdentity::getGroupid).collect(Collectors.toList()));
-	}
+	}	
 
 	@Override
 	public Deposit addDeposit(String groupId, String memberId, Deposit deposit) {
@@ -100,7 +114,19 @@ public class GroupDomainService implements IGroupDomainService {
 		depositDM.setId(identifierUtil.getDepositSeqId());
 		return mapper.mapDepositDM2Deposit(depositRepository.save(depositDM));
 	}
+	
+	@Override
+	public List<Deposit> getMemberDepositInGruop(String groupId, String memberId) {
+		Deposit memDeposit = new Deposit();
+		return mapper.mapDepositDM2Deposit(depositRepository.findByGroupidAndMemberid(groupId, memberId));
+	}
 
+	@Override
+	public List<Deposit> getMemberDeposit(String memberId) {
+		Deposit memDeposit = new Deposit();
+		return mapper.mapDepositDM2Deposit(depositRepository.getDepsitByMemberid(memberId));
+	}
+	
 	@Override
 	public Loan createLoan(String groupId, String memberId, Loan loan) {
 		LoanDM loanDM = mapper.mapLoan2LoanDM(loan).setGroupid(groupId).setMemberid(memberId);

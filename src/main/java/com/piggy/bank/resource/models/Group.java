@@ -9,7 +9,7 @@ public class Group {
 	private int deposit;
 	private String organizerid;
 	private int roi;
-	private List<String> members;
+	private List<Member> member;
 
 	public String getId() {
 		return id;
@@ -56,12 +56,12 @@ public class Group {
 		return this;
 	}
 	
-	public List<String> getMembers() {
-		return members;
+	public List<Member> getMember() {
+		return member;
 	}
 
-	public Group setMembers(List<String> members) {
-		this.members = members;
+	public Group setMember(List<Member> member) {
+		this.member = member;
 		return this;
 	}
 

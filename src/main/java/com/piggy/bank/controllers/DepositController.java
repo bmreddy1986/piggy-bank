@@ -1,5 +1,7 @@
 package com.piggy.bank.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,18 @@ public class DepositController {
 	public ResponseEntity<Deposit> createDeposit(@PathVariable String groupId, @PathVariable String memberId,
 			@RequestBody Deposit deposit) {
 		deposit = domainService.addDeposit(groupId, memberId, deposit);
+		return ResponseEntity.ok().headers(getResponseHeader()).body(deposit);
+	}
+
+	@RequestMapping(value = "/group/{groupId}/member/{memberId}/deposit", method = RequestMethod.GET)
+	public ResponseEntity<List<Deposit>> getMemberDepositinGruop(@PathVariable String groupId, @PathVariable String memberId) {
+		List<Deposit> deposit = domainService.getMemberDepositInGruop(groupId, memberId);
+		return ResponseEntity.ok().headers(getResponseHeader()).body(deposit);
+	}
+	
+	@RequestMapping(value = "member/{memberId}/deposit", method = RequestMethod.GET)
+	public ResponseEntity<List<Deposit>> getMemberDeposit(@PathVariable String memberId) {
+		List<Deposit> deposit = domainService.getMemberDeposit(memberId);
 		return ResponseEntity.ok().headers(getResponseHeader()).body(deposit);
 	}
 
